@@ -7,8 +7,8 @@ from django.shortcuts import render, HttpResponse, redirect
 from .models import MyUser, EmailVerification
 from .forms import MyUserCreationForm, ChangePasswordForm
 from django.core.mail import send_mail
-from RealState.settings import EMAIL_HOST_USER
-
+from carchaiyo.settings import EMAIL_HOST_USER
+from  asgiref.sync import sync_to_async
 # Create your views here.
 
 
@@ -79,6 +79,7 @@ def send_email_verification_code(request):
             created_date_time=create_date,
             total_try_request=total_try_requests,
         )
+
     send_mail(
         "Email Verification Code",
         f"Your email verification code is {code}",
@@ -111,11 +112,11 @@ def verify_email(request):
 def login(request):
     if request.user.is_authenticated:
         if request.user:
-            return redirect('dashboard:home')
+            return redirect('home:home')
     if request.method == 'POST':
         if request.user.is_authenticated:
             if request.user:
-                return redirect('dashboard:home')
+                return redirect('home:home')
             else:
                 return redirect('dashboard:home')
         email = request.POST['email']
@@ -129,9 +130,9 @@ def login(request):
                                    'n.html', context)
 
         if request.user:
-            return redirect('dashboard:home')
+            return redirect('home:home')
         else:
-            return redirect('dashboard:home')
+            return redirect('home:home')
     return render(request, 'accounts/login.html')
 
 
@@ -143,15 +144,14 @@ def password_change(request):
         password = request.POST['password']
         password2 = request.POST['password2']
         data = {"password": password, 'password2': password2, "old_password": old_password}
-
+        form = ChangePasswordForm(data)
         if not request.user.check_password(old_password):
             context['errors'] = 'Your password didnot match with old password'
-        if old_password == password:
+        elif old_password == password:
             context['errors'] = 'old password cannot be new password'
-        if password != password2:
+        elif password != password2:
             context['errors'] = 'your conformed password didnot matched'
-        form = ChangePasswordForm(data)
-        if form.is_valid():
+        elif form.is_valid():
             MyUser.objects.filter(email=request.user).update(password=make_password(form.data['password']))
         else:
             context['errors'] = form.errors

@@ -1,0 +1,191 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Datatables - Car Rental</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="{% static 'dashboard/assets/styles/style.css' %}">
+
+    <!-- Material Design Icon -->
+    <link rel="stylesheet" href="{% static 'dashboard/assets/fonts/material-design/css/materialdesignicons.css' %}">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="{% static 'dashboard/assets/plugin/datatables/dataTables.bootstrap.min.css' %}">
+
+</head>
+
+<body>
+<div class="main-menu">
+    <header class="header">
+        <a href="/" class="logo"><i class="ico mdi mdi-cube-outline"></i>Car Chaiyo</a>
+        <button type="button" class="button-close fa fa-times js__menu_close"></button>
+        <div class="user">
+            <a href="#" class="avatar"><img src="{% static 'dashboard/assets/images/avatar.jpg' %}" alt=""><span
+                    class="status online"></span></a>
+            <h5 class="name"><a href="{% url 'my_profile:profile_list_view' %}">{{ request.user }}</a></h5>
+            <!-- /.name -->
+
+            <!-- /.control-wrap -->
+        </div>
+        <!-- /.user -->
+    </header>
+    <!-- /.header -->
+    <div class="content">
+
+        <div class="navigation">
+            <h5 class="title">Home</h5>
+            <!-- /.title -->
+            <ul class="menu js__accordion">
+                <li>
+                    <a class="waves-effect" href="{% url 'dashboard:home' %}"><i
+                            class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+                </li>
+            </ul>
+            <!-- /.menu js__accordion -->
+            <h5 class="title">Pages</h5>
+            {% if request.user.is_authenticated %}
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'my_profile:profile_list_view' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>My Profile</span></a>
+                    </li>
+                </ul>
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'dashboard:my_cars' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>My Car List </span></a>
+                    </li>
+                </ul>
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'accounts:password_change' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>Change Password </span></a>
+                    </li>
+                </ul>
+{#                <ul class="menu js__accordion">#}
+{#                    <li>#}
+{#                        <a class="waves-effect" href="{% url 'dashboard:my_comments' %}"><i#}
+{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Comment List </span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <ul class="menu js__accordion">#}
+{#                    <li>#}
+{#                        <a class="waves-effect" href="{% url 'dashboard:property_visit_req' %}"><i#}
+{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Visit Request </span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'accounts:logout' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>Logout </span></a>
+                    </li>
+                </ul>
+            {% endif %}
+
+{#            {% if request.user.is_admin %}#}
+{#                <!-- /.title -->#}
+{##}
+{#                <ul class="menu js__accordion">#}
+{#                    <li>#}
+{#                        <a class="waves-effect" href="{% url 'dashboard:all_users' %}"><i#}
+{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>All Users</span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <ul class="menu js__accordion">#}
+{#                    <li>#}
+{#                        <a class="waves-effect" href="{% url 'cars:car_body_list' %}"><i#}
+{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Body List </span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <ul class="menu js__accordion">#}
+{#                    <li>#}
+{#                        <a class="waves-effect" href="{% url 'cars:car_brand_list' %}"><i#}
+{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Brand List </span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{##}
+{#                <ul class="menu js__accordion">#}
+{#                    <li>#}
+{#                        <a class="waves-effect" href="{% url 'cars:car_list_view' %}"><i#}
+{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car List </span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#            {% endif %}#}
+            <!-- /.menu js__accordion -->
+
+        </div>
+        <!-- /.navigation -->
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /.main-menu -->
+
+<div class="fixed-navbar">
+    <div class="pull-left">
+        <button type="button"
+                class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+        <h1 class="page-title">{% block title %}{% endblock %}</h1>
+        <!-- /.page-title -->
+    </div>
+    <!-- /.pull-left -->
+<div class="pull-right">
+			<div class="ico-item">
+                {% block actionblock %}{% endblock %}
+
+				<!-- /.searchform -->
+			</div>
+			<!-- /.ico-item -->
+
+		</div>
+    <!-- /.pull-right -->
+</div>
+<!-- /.fixed-navbar -->
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-xs-12">
+                <div class="box-content">
+                    <!-- /.dropdown js__dropdown -->
+                    <div class="table-responsive">
+
+                        {% block body %}{% endblock %}
+
+                    </div>
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-xs-12 -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+</div>
+<!--/#wrapper -->
+
+<script src="{% static 'dashboard/assets/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/plugin/nprogress/nprogress.js' %}"></script>
+
+<!-- Data Tables -->
+<script src="{% static 'dashboard/assets/plugin/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/plugin/datatables/dataTables.bootstrap.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/plugin/datatables/datatables.demo.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/scripts/main.js' %}"></script>
+
+</body>
+
+</html>
