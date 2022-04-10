@@ -71,61 +71,62 @@
                                 class="menu-icon mdi mdi-view-dashboard"></i><span>Change Password </span></a>
                     </li>
                 </ul>
-{#                <ul class="menu js__accordion">#}
-{#                    <li>#}
-{#                        <a class="waves-effect" href="{% url 'dashboard:my_comments' %}"><i#}
-{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Comment List </span></a>#}
-{#                    </li>#}
-{#                </ul>#}
-{#                <ul class="menu js__accordion">#}
-{#                    <li>#}
-{#                        <a class="waves-effect" href="{% url 'dashboard:property_visit_req' %}"><i#}
-{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Visit Request </span></a>#}
-{#                    </li>#}
-{#                </ul>#}
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'dashboard:my_comments' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>Comment List </span></a>
+                    </li>
+                </ul>
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'dashboard:property_visit_req' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Visit Request </span></a>
+                    </li>
+                </ul>
+
+
+            {% endif %}
+
+            {% if request.user.is_admin %}
+                <!-- /.title -->
 
                 <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'dashboard:all_users' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>All Users</span></a>
+                    </li>
+                </ul>
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'cars:car_body_list' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Body List </span></a>
+                    </li>
+                </ul>
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'cars:car_brand_list' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Brand List </span></a>
+                    </li>
+                </ul>
+
+                <ul class="menu js__accordion">
+                    <li>
+                        <a class="waves-effect" href="{% url 'cars:car_list_view' %}"><i
+                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car List </span></a>
+                    </li>
+                </ul>
+
+
+
+
+
+            {% endif %}
+        <ul class="menu js__accordion">
                     <li>
                         <a class="waves-effect" href="{% url 'accounts:logout' %}"><i
                                 class="menu-icon mdi mdi-view-dashboard"></i><span>Logout </span></a>
                     </li>
                 </ul>
-            {% endif %}
-
-{#            {% if request.user.is_admin %}#}
-{#                <!-- /.title -->#}
-{##}
-{#                <ul class="menu js__accordion">#}
-{#                    <li>#}
-{#                        <a class="waves-effect" href="{% url 'dashboard:all_users' %}"><i#}
-{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>All Users</span></a>#}
-{#                    </li>#}
-{#                </ul>#}
-{#                <ul class="menu js__accordion">#}
-{#                    <li>#}
-{#                        <a class="waves-effect" href="{% url 'cars:car_body_list' %}"><i#}
-{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Body List </span></a>#}
-{#                    </li>#}
-{#                </ul>#}
-{#                <ul class="menu js__accordion">#}
-{#                    <li>#}
-{#                        <a class="waves-effect" href="{% url 'cars:car_brand_list' %}"><i#}
-{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car Brand List </span></a>#}
-{#                    </li>#}
-{#                </ul>#}
-{##}
-{#                <ul class="menu js__accordion">#}
-{#                    <li>#}
-{#                        <a class="waves-effect" href="{% url 'cars:car_list_view' %}"><i#}
-{#                                class="menu-icon mdi mdi-view-dashboard"></i><span>Car List </span></a>#}
-{#                    </li>#}
-{#                </ul>#}
-{##}
-{##}
-{##}
-{##}
-{##}
-{#            {% endif %}#}
             <!-- /.menu js__accordion -->
 
         </div>
