@@ -27,10 +27,16 @@ class CarForm(forms.ModelForm):
     class Meta:
         model = Car
         fields = [
-            'user', 'photo', 'name', 'brand', 'body_type', 'fuel_type', 'transmission',
-            'price', 'interior_color', 'engine_name','desc', 'mileage', 'km_driven', 'car_number',
+            'user', 'photo', 'photo2', 'photo3', 'photo4', 'name', 'brand', 'body_type', 'fuel_type',
+            'transmission',
+            'price', 'interior_color', 'engine_name', 'desc', 'mileage', 'km_driven', 'car_number',
             'is_available', 'is_price_negotiable'
         ]
+        labels = {
+            'photo2': 'Photo 2 (Optional)',
+            'photo3': 'Photo 3 (Optional)',
+            'photo4': 'Photo 4 (Optional)',
+        }
         widgets = {
             'user': forms.Select(attrs={'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),

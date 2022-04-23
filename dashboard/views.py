@@ -62,3 +62,20 @@ def remove_comment(request):
             pass
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@is_admin_or_user()
+def block_user(request, username):
+    try:
+        MyUser.objects.filter(username=username).update(is_active=False)
+    except:
+        pass
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@is_admin_or_user()
+def unblock_user(request, username):
+    try:
+        MyUser.objects.filter(username=username).update(is_active=True)
+    except:
+        pass
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

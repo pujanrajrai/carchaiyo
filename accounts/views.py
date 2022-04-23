@@ -161,3 +161,30 @@ def password_change(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+import random
+import string
+
+
+def forger_password(request):
+    context = {}
+    if request.method == 'POST':
+        email = request.POST['email']
+        length = 10
+        lower = string.ascii_lowercase
+        upper = string.ascii_uppercase
+        num = string.digits
+        symbols = string.punctuation
+        all = lower + upper + num + symbols
+        temp = random.sample(all, length)
+        password = "".join(temp)
+        send_mail(
+            "Email Verification Code",
+            f"Your email verification code is {password}",
+            EMAIL_HOST_USER,
+            [email],
+        )
+        MyUser.objects.filter(email=email).update(password=make_password(password))
+        context['errors'] = 'Password has been send to your email address'
+    return render(request, 'accounts/forget_password.html', context)

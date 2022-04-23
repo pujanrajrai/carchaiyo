@@ -6,14 +6,14 @@
         <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
             <div class="col-md-6 p-5 mt-lg-5">
                 <h1 class="display-5 animated fadeIn mb-4">Crafting Your Drive Enjoyable And Memorable
-                        <span class="text-primary">Is
+                    <span class="text-primary">Is
                         </span> Our Aim
-                    </h1>
-                    <p class="animated fadeIn mb-4 pb-2">Enjoy Your Moment With Our Vehicles. <br>We Are The Best
-                        Solutions
-                        For Vehicle Services. </p>
-                    <a href="{% url 'accounts:login' %}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get
-                        Started</a>
+                </h1>
+                <p class="animated fadeIn mb-4 pb-2">Enjoy Your Moment With Our Vehicles. <br>We Are The Best
+                    Solutions
+                    For Vehicle Services. </p>
+                <a href="{% url 'accounts:login' %}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get
+                    Started</a>
             </div>
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div><h4 class="text-white">Transmission
-                                    </h4></div>
+                                </h4></div>
                                 <select name="tranmissions" class="form-select border-0 py-3">
                                     <option value="any" selected>Any</option>
 
@@ -97,8 +97,8 @@
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="{% url 'home:car_desc' car.id %}"><img class="img-fluid"
-                                                                                                  src="{{ car.photo.url }}"
-                                                                                                  alt=""></a>
+                                                                                        src="{{ car.photo.url }}"
+                                                                                        alt=""></a>
                                         <div
                                                 class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             {{ car.brand }}
@@ -113,7 +113,8 @@
                                         <a href="" class="d-block h5 mb-2"
                                            href="">{{ car.name }}</a>
                                         <p>
-                                            <i class="fa fa-map-marker-alt text-primary me-2"></i>Km Driven: {{ car.km_driven }} K.M
+                                            <i class="fa fa-map-marker-alt text-primary me-2"></i>Km
+                                            Driven: {{ car.km_driven }} K.M
                                         </p>
                                     </div>
                                     <div class="d-flex border-top">
@@ -172,8 +173,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=Sedan&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/apartment.png' %}" alt="Icon">
-                            </div>
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/1615/1615112.png" alt="" title=""
+                                     class="img-fluid loaded"></div>
                             <h6>Sedan</h6>
                             <span>{{ sedan_count }} Cars</span>
                         </div>
@@ -184,8 +186,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=Coupe&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/apartment.png' %}" alt="Icon">
-                            </div>
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/2089/2089838.png" alt="" title=""
+                                     class="img-fluid loaded"></div>
                             <h6>Coupe</h6>
                             <span>{{ coupe_count }} Cars</span>
                         </div>
@@ -196,7 +199,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=Hatchback&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/home.png' %}" alt="Icon">
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/683/683088.png" alt="" title=""
+                                     class="img-fluid loaded">
                             </div>
                             <h6>Hatchback</h6>
                             <span>{{ hatchback_count }} Cars</span>
@@ -208,7 +213,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=SUV&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/office.png' %}" alt="Icon">
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/3900/3900619.png" alt="" title=""
+                                     class="img-fluid loaded">
                             </div>
                             <h6>SUV</h6>
                             <span>{{ suv_count }} Cars</span>
@@ -220,8 +227,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=Crossover&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/building.png' %}" alt="Icon">
-                            </div>
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/1085/1085926.png" alt="" title=""
+                                     class="img-fluid loaded"></div>
                             <h6>Crossover</h6>
                             <span>{{ crossover_count }} Cars</span>
                         </div>
@@ -232,8 +240,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=Minivan/Van&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/town.png' %}" alt="Icon">
-                            </div>
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/2844/2844078.png" alt="" title=""
+                                     class="img-fluid loaded"></div>
                             <h6>Minivan/Van</h6>
                             <span>{{ mini_van_count }} Cars</span>
                         </div>
@@ -244,8 +253,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=Pickup&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/shop.png' %}" alt="Icon">
-                            </div>
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/609/609361.png" alt="" title=""
+                                     class="img-fluid loaded"></div>
                             <h6>Pickup</h6>
                             <span>{{ pickup_count }} Cars</span>
                         </div>
@@ -256,8 +266,9 @@
                        href="{% url 'home:car_search' %}?brands=any&bodies=Wagon&tranmissions=any">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
-                                <img class="img-fluid" src="{% static 'home/img/icon/garage.png' %}" alt="Icon">
-                            </div>
+                                <img width="50" height="50"
+                                     src="https://cdn-icons-png.flaticon.com/512/2579/2579632.png" alt="" title=""
+                                     class="img-fluid loaded"></div>
                             <h6>Wagon</h6>
                             <span>{{ wagon_count }} Cars</span>
                         </div>

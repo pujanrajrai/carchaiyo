@@ -9,5 +9,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('send/email/verification', views.send_email_verification_code, name='send_email_verification_code'),
     path('email/verify', views.verify_email, name='verify_email'),
-    path('logout', views.logout, name='logout')
+    path('logout', views.logout, name='logout'),
+    path('forget/password', views.forger_password, name='forger_password')
+
 ]

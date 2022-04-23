@@ -41,101 +41,244 @@
 
 {% block body %}
     <!-- Property Desc Start -->
+    {#        <div class="container-xxl py-5">#}
+    {#            <div class="container">#}
+    {#                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">#}
+    {#                    <h1 class="mb-3">{{ car.name }}</h1>#}
+    {##}
+    {#                    <p></p>#}
+    {#                </div>#}
+    {#                <div class="row g-4">#}
+    {#                <div class="row"></div>#}
+    {##}
+    {#                    <div class="col-md-9 wow fadeInUp" data-wow-delay="0.1s">#}
+    {#                        <img src="{{ car.photo.url }}" style="height: 700px; width: 100%; object-fit: cover;" alt="">#}
+    {#                    </div>#}
+    {##}
+    {##}
+    {#                    <div class="col-md-3">#}
+    {#                        <h5>Brand: {{ car.brand }}</h5>#}
+    {#                        <h5>Body Type: {{ car.body_type }}</h5>#}
+    {#                        <h5>Fuel Type: {{ car.fuel_type }}</h5>#}
+    {#                        <h5>Transmission: {{ car.transmission }}</h5>#}
+    {#                        <h5>Price Rs : {{ car.price }}</h5>#}
+    {#                        <h5>Interior Colors : {{ car.interior_color }}</h5>#}
+    {#                        <h5>Engine Name : {{ car.engine_name }}</h5>#}
+    {#                        <h5>Car Mileage: {{ car.mileage }}</h5>#}
+    {#                        <h5>Km Driven : {{ car.km_driven }}</h5>#}
+    {#                        <h5>Added Date: {{ car.added_date }}</h5>#}
+    {#                        <h5>Is Car Available : {{ car.is_available }}</h5>#}
+    {#                        <h5>Is Price Negotiable : {{ car.is_price_negotiable }}</h5>#}
+    {#                        <h5>Car Number: {{ car.car_number }}</h5>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                    <div class="col-md-12">#}
+    {#                        <div class="wow fadeInUp" data-wow-delay="0.5s">#}
+    {#                            <p class="mb-4">{{ car.desc|safe }}</p>#}
+    {#                            <div class="col-lg-6 col-md-12 mb-5">#}
+    {##}
+    {#                                {% if not is_requested %}#}
+    {#                                    <form method="post" action="{% url 'home:request_visit' %}">#}
+    {#                                        {% csrf_token %}#}
+    {#                                        <input type="hidden" name="car_id" value="{{ car.pk }}">#}
+    {##}
+    {#                                        <input class="btn btn-primary py-3 px-5" type="suit
+    bmit"#}
+    {#                                               value="Request For Car Visit">#}
+    {#                                    </form>#}
+    {#                                {% else %}#}
+    {#                                    <div class="alert alert-success"> This Car has been requested to visit#}
+    {#                                    </div>#}
+    {#                                {% endif %}#}
+    {##}
+    {#                            </div>#}
+    {##}
+    {#                            <h1 class="mb-3">Leave A Comment</h1>#}
+    {#                            <form method="post" action="{% url 'home:comment' %}">#}
+    {#                                {% csrf_token %}#}
+    {#                                <div class="row g-3">#}
+    {#                                    <div class="col-12">#}
+    {#                                        <div class="form-floating">#}
+    {#                                                <textarea name="comment" class="form-control" placeholder=""#}
+    {#                                                          id="message" style="height: 150px" required></textarea>#}
+    {#                                            <label for="message">Leave a comment here *</label>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                    <div class="col-lg-5">#}
+    {#                                        {% if messages %}#}
+    {#                                            {% for message in messages %}#}
+    {#                                                <div{% if message.tags == 'comment_error_message' %}#}
+    {#                                                    class="alert alert-danger" {% else %}#}
+    {#                                                    class="alert alert-success" {% endif %}>{{ message }}</div>#}
+    {#                                            {% endfor %}#}
+    {#                                        {% endif %}#}
+    {##}
+    {#                                    </div>#}
+    {#                                    <hr>#}
+    {#                                    <div class="col-lg-3 col-md-12">#}
+    {#                                        <input value="{{ car.pk }}" type="hidden" name="car_id">#}
+    {#                                        <input value="Submit Comment" class="btn btn-primary w-100 py-3" type="submit">#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            </form>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    <!-- Property Desc End -->
+
+    {#            <div class="container">#}
+    {#                <div class="row">#}
+    {#                    {% for comment in comments %}#}
+    {#                        <div class="col-12">#}
+    {#                            <div class="comments">#}
+    {#                                <div class="comment-box">#}
+    {#                                    <span class="commenter-name mt-3">#}
+    {#                                        <a href="#">{{ comment.user.username }}</a> <span class="comment-time">{{ comment.date_of_added }}</span>#}
+    {#                                    </span>#}
+    {#                                    <p class="comment-txt more">{{ comment.comment }}</p>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    {% endfor %}#}
+    {##}
+    {#                </div>#}
+    {#            </div>#}
+    <section class="container single-product my-5 pt-5">
+        <div class="row mt-5">
+            <div class="col-lg-5 col-md-12 col-12">
+                <img class="img-fluid w-100 pb-1" style="max-height: 480px; min-height: 480px; object-fit: cover"
+                     src="{{ car.photo.url }}" id="MainImg" alt="">
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                        <img src="{{ car.photo.url }}" width="100%" class="small-img" alt="">
+                    </div>
+                    {% if car.photo2 %}
+                        <div class="small-img-col">
+                            <img src="{{ car.photo2.url }}" width="100%" class="small-img" alt="">
+                        </div>
+                    {% endif %}
+                    {% if car.photo3 %}
+                        <div class="small-img-col">
+                            <img src="{{ car.photo3.url }}" width="100%" class="small-img" alt="">
+                        </div>
+                    {% endif %}
+                    {% if car.photo4 %}
+                        <div class="small-img-col">
+                            <img src="{{ car.photo4.url }}" width="100%" class="small-img" alt="">
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-12 col-12-sm">
+                <h6>{{ car.body_type }}</h6>
+                <h3 class="py-4">{{ car.name }}</h3>
+                <h2>Rs. {{ car.price }}</h2>
+                <h6>
+                    <p class="mb-6">
+                        Brand:
+                        <button class=" btn-info">{{ car.brand }}</button>
+                        Fuel Type:
+                        <button class=" btn-info">{{ car.fuel_type }}</button>
+                        Transmission:
+                        <button class=" btn-info">{{ car.transmission }}</button>
+                    </p>
+                    <p class="mb-6">
+                        Interior Colors:
+                        <button class=" btn-info">{{ car.interior_color }}</button>
+                        Engine Name:
+                        <button class=" btn-info">{{ car.engine_name }}</button>
+                        Car Mileage:
+                        <button class=" btn-info">{{ car.mileage }}</button>
+                    </p>
+                    <p class="mb-6">
+                        Km Driven:
+                        <button class=" btn-info">{{ car.km_driven }}</button>
+                        Added Date:
+                        <button class=" btn-info">{{ car.added_date }}</button>
+                        Is Car Available:
+                        <button class=" btn-info">{{ car.is_available }}</button>
+                    </p>
+                    <p class="mb-6">
+                        Is Price Negotiable:
+                        <button class=" btn-info">{{ car.is_price_negotiable }}</button>
+                        Car Number:
+                        <button class=" btn-info">{{ car.car_number }}</button>
+                    </p>
+                </h6>
+
+                <h4 class="mt-5 mb-4">Car Details</h4>
+                <span>{{ car.desc|safe }}</span>
+            </div>
+        </div>
+
+    </section>
     <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="mb-3">{{ car.name }}</h1>
+        <div class="col-md-12">
+            <div class="wow fadeInUp" data-wow-delay="0.5s">
+                <p class="mb-4">{{ car.desc|safe }}</p>
+                <div class="col-lg-6 col-md-12 mb-5">
 
-                <p></p>
-            </div>
-            <div class="row g-4">
-            <div class="row"></div>
+                    {% if not is_requested %}
+                        <form method="post" action="{% url 'home:request_visit' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="car_id" value="{{ car.pk }}">
 
-                <div class="col-md-9 wow fadeInUp" data-wow-delay="0.1s">
-                    <img src="{{ car.photo.url }}" style="height: 700px; width: 100%; object-fit: cover;" alt="">
+                            <input class="btn btn-primary py-3 px-5" type="submit"
+                                   value="Request For Car Visit">
+                        </form>
+                    {% else %}
+                        <div class="alert alert-success"> This Car has been requested to visit
+                        </div>
+                    {% endif %}
+
                 </div>
 
-
-                <div class="col-md-3">
-                    <h5>Brand: {{ car.brand }}</h5>
-                    <h5>Body Type: {{ car.body_type }}</h5>
-                    <h5>Fuel Type: {{ car.fuel_type }}</h5>
-                    <h5>Transmission: {{ car.transmission }}</h5>
-                    <h5>Price Rs : {{ car.price }}</h5>
-                    <h5>Interior Colors : {{ car.interior_color }}</h5>
-                    <h5>Engine Name : {{ car.engine_name }}</h5>
-                    <h5>Car Mileage: {{ car.mileage }}</h5>
-                    <h5>Km Driven : {{ car.km_driven }}</h5>
-                    <h5>Added Date: {{ car.added_date }}</h5>
-                    <h5>Is Car Available : {{ car.is_available }}</h5>
-                    <h5>Is Price Negotiable : {{ car.is_price_negotiable }}</h5>
-                    <h5>Car Number: {{ car.car_number }}</h5>
-                </div>
-            </div>
-                <div class="col-md-12">
-                    <div class="wow fadeInUp" data-wow-delay="0.5s">
-                        <p class="mb-4">{{ car.desc|safe }}</p>
-                        <div class="col-lg-6 col-md-12 mb-5">
-
-                            {% if not is_requested %}
-                                <form method="post" action="{% url 'home:request_visit' %}">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="car_id" value="{{ car.pk }}">
-
-                                    <input class="btn btn-primary py-3 px-5" type="submit"
-                                           value="Request For Car Visit">
-                                </form>
-                            {% else %}
-                                <div class="alert alert-success"> This Car has been requested to visit
-                                </div>
+                <h1 class="mb-3">Leave A Comment</h1>
+                <form method="post" action="{% url 'home:comment' %}">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                                <textarea name="comment" class="form-control" placeholder=""
+                                                          id="message" style="height: 150px" required></textarea>
+                                <label for="message">Leave a comment here *</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div{% if message.tags == 'comment_error_message' %}
+                                        class="alert alert-danger" {% else %}
+                                        class="alert alert-success" {% endif %}>{{ message }}</div>
+                                {% endfor %}
                             {% endif %}
 
                         </div>
-
-                        <h1 class="mb-3">Leave A Comment</h1>
-                        <form method="post" action="{% url 'home:comment' %}">
-                            {% csrf_token %}
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                            <textarea name="comment" class="form-control" placeholder=""
-                                                      id="message" style="height: 150px" required></textarea>
-                                        <label for="message">Leave a comment here *</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    {% if messages %}
-                                        {% for message in messages %}
-                                            <div{% if message.tags == 'comment_error_message' %}
-                                                class="alert alert-danger" {% else %}
-                                                class="alert alert-success" {% endif %}>{{ message }}</div>
-                                        {% endfor %}
-                                    {% endif %}
-
-                                </div>
-                                <hr>
-                                <div class="col-lg-3 col-md-12">
-                                    <input value="{{ car.pk }}" type="hidden" name="car_id">
-                                    <input value="Submit Comment" class="btn btn-primary w-100 py-3" type="submit">
-                                </div>
-                            </div>
-                        </form>
+                        <hr>
+                        <div class="col-lg-3 col-md-12">
+                            <input value="{{ car.pk }}" type="hidden" name="car_id">
+                            <input value="Submit Comment" class="btn btn-primary w-100 py-3" type="submit">
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
+
+
         </div>
     </div>
-    <!-- Property Desc End -->
-
     <div class="container">
         <div class="row">
             {% for comment in comments %}
                 <div class="col-12">
                     <div class="comments">
                         <div class="comment-box">
-                            <span class="commenter-name mt-3">
-                                <a href="#">{{ comment.user.username }}</a> <span class="comment-time">{{ comment.date_of_added }}</span>
-                            </span>
+                                    <span class="commenter-name mt-3">
+                                        <a href="#">{{ comment.user.username }}</a> <span
+                                            class="comment-time">{{ comment.date_of_added }}</span>
+                                    </span>
                             <p class="comment-txt more">{{ comment.comment }}</p>
                         </div>
                     </div>
@@ -144,5 +287,65 @@
 
         </div>
     </div>
+    <style>
+        .small-img-group {
+            display: flex;
+            justify-content: space-between;
 
+        }
+
+        .small-img-col {
+            flex-basis: 24%;
+            cursor: pointer;
+            max-height: 130px;
+            min-height: 130px;
+            max-width: 130px;
+            min-width: 130px;
+
+        }
+
+        .single-product select {
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .single-product input {
+            width: 50px;
+            height: 40px;
+            padding-left: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .single-product input:focus {
+            outline: none;
+        }
+
+        .buy-btn {
+            background-color: #fb77fb;
+            opacity: 1;
+            transition: 0.3s all;
+        }
+    </style>
+
+    <script>
+        var MainImg = document.getElementById('MainImg');
+        var smallimg = document.getElementsByClassName('small-img');
+
+        smallimg[0].onclick = function () {
+            MainImg.src = smallimg[0].src;
+        }
+        smallimg[1].onclick = function () {
+            MainImg.src = smallimg[1].src;
+        }
+        smallimg[2].onclick = function () {
+            MainImg.src = smallimg[2].src;
+        }
+        smallimg[3].onclick = function () {
+            MainImg.src = smallimg[3].src;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
 {% endblock %}

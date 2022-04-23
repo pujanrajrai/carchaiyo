@@ -17,6 +17,7 @@
                 <th>User</th>
                 <th>Email</th>
                 <th>Email_Verified</th>
+                <th>Action</th>
 
 
             </tr>
@@ -28,6 +29,11 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.is_email_verified }}</td>
+                    <td>{% if user.is_active %}
+                        <a href="/dashboard/block/user/{{ user.username }}" class="btn btn-success"> Block
+                            User </a>{% else %}
+                        <a href="/dashboard/unblock/user/{{ user.username }}" class="btn btn-info"> UnBlock
+                            User </a>{% endif %}</td>
 
                 </tr>
             {% endfor %}

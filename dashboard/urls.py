@@ -10,5 +10,8 @@ urlpatterns = [
     path('all/users/', views.all_user, name='all_users'),
     path('my/properties/', views.my_cars, name='my_cars'),
     path('my/comments/', views.my_comment, name='my_comments'),
-    path('delete/comments/', views.remove_comment, name='remove_comment')
+    path('delete/comments/', views.remove_comment, name='remove_comment'),
+    path('block/user/<slug:username>', views.block_user, name='block_user'),
+    path('unblock/user/<slug:username>', views.unblock_user, name='unblock_user')
+
 ]
